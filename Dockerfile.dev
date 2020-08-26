@@ -1,0 +1,11 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+# This step isn't necessary if you're using docker-compose with volumes. However, it's a good idea to keep it because it's needed if you don't use docker-compose/for production.
+COPY . .
+
+CMD ["npm", "run", "start"]
