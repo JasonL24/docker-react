@@ -7,5 +7,7 @@ RUN npm run build
 
 # By putting a new FROM, that's saying the first phase is done
 FROM nginx
+# Expose port 80 for AWS elastic beanstalk
+EXPOSE 80
 # Copy the result in /app/build from the builder phase and put it in that nginx directory specified by nginx documentation
 COPY --from=builder /app/build /usr/share/nginx/html
